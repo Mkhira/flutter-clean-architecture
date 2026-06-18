@@ -75,6 +75,45 @@ stays pure Dart.
 
 ---
 
+## Built on SOLID & Clean Architecture
+
+The skill doesn't just put files in folders — it applies **Clean Architecture**
+and **SOLID** principles to every feature it touches:
+
+- **Single Responsibility** — each use case does one thing, each datasource has
+  one job, widgets only render. Logic lives in the domain, not in the UI.
+- **Open/Closed & Dependency Inversion** — the domain depends on **abstract
+  repository contracts**, and the data layer implements them. You can swap a
+  data source (real API, fake, cache) without touching the domain or UI.
+- **Interface Segregation** — small, focused contracts instead of one giant
+  service class.
+- **Clean boundaries** — the dependency rule is enforced: `domain` stays pure
+  Dart, `presentation` never reaches into `data`, and outside errors are mapped
+  into clean domain failures before they ever reach a widget.
+
+The payoff: code that is **testable, easy to change, and consistent** — every
+feature has the same predictable shape.
+
+---
+
+## Works with your SDK and packages
+
+The skill adapts to **your installed environment** instead of forcing fixed
+versions:
+
+- **Detects your SDK** — it reads your installed Flutter/Dart version and the
+  SDK constraint declared in your project, then generates code that fits. Modern
+  Dart 3 features (sealed classes, pattern matching) are used when your SDK
+  supports them, and it **warns you** if your SDK is too old instead of silently
+  shipping code that won't compile.
+- **Resolves the latest compatible packages** — rather than hand-pinning version
+  numbers, it lets Pub pick the newest versions that work together for your SDK.
+  That keeps your dependencies current and avoids version conflicts.
+- **Adapts to package APIs** — if a package's API differs across versions, it
+  matches the version actually installed in your project.
+
+---
+
 ## Create a new project
 
 Just describe what you want:
@@ -104,6 +143,19 @@ Minimal example:
 Open your Flutter project and just ask — the skill activates automatically on any
 Flutter/Dart task. It **inspects your conventions and detects your stack**, so it
 follows your setup instead of imposing its own.
+
+When working in an existing project it:
+
+- **Detects your state-management stack** (Bloc, Riverpod, Provider, GetX, MobX)
+  and matches it — it never switches you to a different one.
+- **Follows your existing folder and naming conventions** instead of imposing
+  its own.
+- **Adds new features in clean, layered, SOLID shape** — domain / data /
+  presentation — so the codebase stays consistent as it grows.
+- **Works against your installed SDK and packages**, resolving compatible
+  versions for what you already have.
+- Can **review existing code** against Clean Architecture and SOLID and point out
+  where boundaries are crossed.
 
 Common requests:
 
