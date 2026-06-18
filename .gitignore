@@ -19,3 +19,7 @@ build/
 
 # Distributable zips
 *.zip
+
+# Raw video sources (convert to docs/*.gif instead)
+*.mov
+*.mp4
