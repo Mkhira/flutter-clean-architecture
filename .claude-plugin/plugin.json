@@ -1,0 +1,9 @@
+{
+  "name": "flutter-clean-architecture",
+  "description": "Build Flutter apps with feature-first Clean Architecture and SOLID — layered, type-safe, lint-clean, and tested. Five state-management stacks, API codegen from OpenAPI/JSON, and SDK-aware package resolution.",
+  "version": "12.0.0",
+  "author": "Mkhira",
+  "skills": [
+    "./skills/flutter-clean-architecture"
+  ]
+}

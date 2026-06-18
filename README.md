@@ -6,6 +6,37 @@ A skill that helps you build Flutter apps the right way — every feature comes 
 
 ---
 
+## Installation
+
+The fastest way — works across agents (Claude Code, Cursor, Windsurf, …):
+
+```bash
+npx skills@latest add Mkhira/flutter-clean-architecture
+```
+
+Pick the skill and your agent when prompted; it installs into the right place
+automatically.
+
+**As a Claude Code plugin** — this repo ships a `.claude-plugin/plugin.json`, so
+you can also add it as a plugin and the skill activates on any Flutter/Dart task.
+
+**Manual install** — clone the repo and copy the skill folder into your agent's
+skills directory (for Claude Code that's `~/.claude/skills/`):
+
+```bash
+git clone https://github.com/Mkhira/flutter-clean-architecture.git
+cp -R flutter-clean-architecture/skills/flutter-clean-architecture ~/.claude/skills/
+```
+
+### Requirements
+
+- **Flutter** installed and on your `PATH`.
+- **Dart 3.0+** — generated code uses Dart 3 features (sealed classes, pattern
+  matching). The skill detects your SDK and warns if it's below this floor.
+- Validated on **Flutter 3.41–3.44 / Dart 3.11–3.12** (see `CHANGELOG.md`).
+
+---
+
 ## Project structure
 
 The project is **feature-first**: shared foundations live in `core/`, the app
