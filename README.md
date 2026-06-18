@@ -4,6 +4,11 @@ A skill that helps you build Flutter apps the right way — every feature comes 
 **layered, type-safe, lint-clean, and tested** instead of ad-hoc. It follows
 **feature-first Clean Architecture** and keeps your code organized as the app grows.
 
+<!-- TODO: replace docs/screenshot.png with a real screenshot of an app built with this skill -->
+<p align="center">
+  <img src="docs/screenshot.png" alt="App built with the Flutter Clean Architecture skill" width="800">
+</p>
+
 ---
 
 ## Installation
