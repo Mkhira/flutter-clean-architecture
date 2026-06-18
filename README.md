@@ -17,8 +17,15 @@ npx skills@latest add Mkhira/flutter-clean-architecture
 Pick the skill and your agent when prompted; it installs into the right place
 automatically.
 
-**As a Claude Code plugin** — this repo ships a `.claude-plugin/plugin.json`, so
-you can also add it as a plugin and the skill activates on any Flutter/Dart task.
+**As a Claude Code plugin** — this repo ships a plugin marketplace, so you can
+install it natively:
+
+```
+/plugin marketplace add Mkhira/flutter-clean-architecture
+/plugin install flutter-clean-architecture@flutter-clean-architecture
+```
+
+The skill then activates automatically on any Flutter/Dart task.
 
 **Manual install** — clone the repo and copy the skill folder into your agent's
 skills directory (for Claude Code that's `~/.claude/skills/`):
@@ -76,8 +83,11 @@ lib/
 
 ### How the layers depend on each other
 
-```
-presentation  ──▶  domain  ◀──  data
+```mermaid
+flowchart LR
+    UI[presentation<br/>pages · widgets · state] --> D[domain<br/>entities · contracts · use cases]
+    DATA[data<br/>models · datasources · repos] --> D
+    DATA -. talks to .-> API[(API / storage)]
 ```
 
 Both `presentation` and `data` depend on `domain` — never the reverse, and
@@ -230,3 +240,29 @@ A few things the skill intentionally **won't** do — so you know what to expect
   the skill warns instead of shipping code that won't compile.
 - **Not a backend or design tool.** It builds the Flutter client; it doesn't
   create APIs, databases, or UI designs for you.
+
+---
+
+## Built with this skill
+
+Real features it has generated, each in the same clean, layered shape:
+
+| Feature | Source | Highlights |
+|---|---|---|
+| **products** | fake datasource | paginated list, infinite scroll + pull-to-refresh |
+| **elixirs** | Wizard World API | nested ingredients/inventors, difficulty filter |
+| **houses** | Wizard World API | nested heads/traits, themed Hero avatars |
+| **auth** | fake | secure-storage tokens, auth-gated routing |
+
+Every one follows the same path: describe it → fill the remaining logic → wire DI,
+route, and localization → validate.
+
+---
+
+## Contributing
+
+Issues and pull requests are welcome — see [`CONTRIBUTING.md`](CONTRIBUTING.md).
+
+## License
+
+[MIT](LICENSE) © Mkhira
