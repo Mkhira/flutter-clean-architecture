@@ -209,3 +209,24 @@ add golden tests for the cards
 - Turning an API contract straight into working, type-safe Dart code.
 - Keeping a growing codebase consistent — same shape for every feature.
 - Bringing structure and best practices to an existing project.
+
+---
+
+## Limitations
+
+A few things the skill intentionally **won't** do — so you know what to expect:
+
+- **Won't invent API models.** It needs a real OpenAPI/Swagger spec or a sample
+  JSON response; it won't guess fields, types, or endpoints.
+- **Won't switch your state-management stack.** In an existing project it detects
+  and follows your stack — it never migrates you from one to another.
+- **Won't edit generated files.** Files produced by `build_runner` (`*.g.dart`,
+  `*.freezed.dart`, etc.) are regenerated, not hand-edited.
+- **Codegen automation is best on Claude Code.** The architecture guidance works
+  on any agent, but the bundled generator scripts are designed to run in Claude
+  Code; other agents still get the layered patterns, just without that
+  automation.
+- **Requires Dart 3.0+.** Generated code uses Dart 3 features — on an older SDK
+  the skill warns instead of shipping code that won't compile.
+- **Not a backend or design tool.** It builds the Flutter client; it doesn't
+  create APIs, databases, or UI designs for you.
