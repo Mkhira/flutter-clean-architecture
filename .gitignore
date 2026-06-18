@@ -1,0 +1,21 @@
+# Internal QA / eval harness — not part of the published skill
+eval/
+
+# skills CLI install artifacts
+.agents/
+skills-lock.json
+
+# macOS
+.DS_Store
+__MACOSX/
+
+# Python
+__pycache__/
+*.pyc
+
+# Flutter build artifacts (if a build ever ran inside the skill dir)
+build/
+.dart_tool/
+
+# Distributable zips
+*.zip
