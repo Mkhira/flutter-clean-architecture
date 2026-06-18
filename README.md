@@ -8,19 +8,52 @@ A skill that helps you build Flutter apps the right way — every feature comes 
 
 ## Project structure
 
+The project is **feature-first**: shared foundations live in `core/`, the app
+boots from `app/`, and each feature is a self-contained folder split into three
+layers.
+
 ```
 lib/
-├── core/        DI · theme · localization · router · network · error · env
-├── app/         App widget + startup
+├── core/        shared foundations used across the whole app
+│   ├── di/             dependency injection setup
+│   ├── theme/          colors, text styles, design tokens (light/dark)
+│   ├── localization/   languages & translations
+│   ├── router/         app routes and navigation
+│   ├── network/        Dio client + interceptors
+│   ├── error/          failures and error mapping
+│   └── env/            environment config (dev / staging / prod)
+│
+├── app/         the root App widget and startup
+│
 └── features/<feature>/
     ├── domain/        entities · repository contracts · use cases   (pure Dart)
     ├── data/          models · datasources · repository implementations
     └── presentation/  state management · pages · widgets
 ```
 
-**The rule:** UI renders, state coordinates, domain holds the logic, and data
-talks to the outside world. Network/infrastructure errors never leak into your
-widgets, and `domain/` stays pure Dart.
+### The three layers of a feature
+
+- **domain** — the heart of the feature. Holds the business **entities**,
+  abstract **repository contracts**, and **use cases** (one action each). It's
+  **pure Dart** — no Flutter, no Dio, no packages — so it never breaks when the
+  outside world changes.
+- **data** — talks to the outside world. **Models** parse JSON, **datasources**
+  call the API (or local storage), and **repository implementations** fulfill the
+  contracts the domain defines, mapping raw errors into clean domain failures.
+- **presentation** — what the user sees. **State management** (Bloc, Riverpod,
+  etc.) coordinates, **pages** lay out screens, and **widgets** render.
+
+### How the layers depend on each other
+
+```
+presentation  ──▶  domain  ◀──  data
+```
+
+Both `presentation` and `data` depend on `domain` — never the reverse, and
+`presentation` never reaches into `data` directly. The result: **UI renders,
+state coordinates, domain holds the logic, and data talks to the outside world.**
+Network and infrastructure errors never leak into your widgets, and `domain/`
+stays pure Dart.
 
 ---
 
