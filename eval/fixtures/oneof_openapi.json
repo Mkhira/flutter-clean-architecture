@@ -1,0 +1,59 @@
+{
+  "openapi": "3.0.1",
+  "info": { "title": "OneOf Fixture API", "version": "1.0" },
+  "paths": {
+    "/pets": {
+      "get": {
+        "tags": ["Pets"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/PetDto" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PetDto": {
+        "oneOf": [
+          { "$ref": "#/components/schemas/CatDto" },
+          { "$ref": "#/components/schemas/DogDto" }
+        ],
+        "discriminator": {
+          "propertyName": "petType",
+          "mapping": {
+            "cat": "#/components/schemas/CatDto",
+            "dog": "#/components/schemas/DogDto"
+          }
+        }
+      },
+      "CatDto": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "format": "int32" },
+          "petType": { "type": "string" },
+          "name": { "type": "string" },
+          "lives": { "type": "integer", "format": "int32" }
+        }
+      },
+      "DogDto": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "format": "int32" },
+          "petType": { "type": "string" },
+          "name": { "type": "string" },
+          "goodBoy": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

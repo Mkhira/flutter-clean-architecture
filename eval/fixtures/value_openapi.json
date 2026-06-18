@@ -1,0 +1,38 @@
+{
+  "openapi": "3.0.1",
+  "info": { "title": "Value Fixture API", "version": "1.0" },
+  "paths": {
+    "/gizmos": {
+      "get": {
+        "tags": ["Gizmos"],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/GizmoDto" }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "GizmoDto": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer", "format": "int32" },
+          "name": { "type": "string", "nullable": true },
+          "price": { "type": "number", "format": "double" },
+          "active": { "type": "boolean" }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

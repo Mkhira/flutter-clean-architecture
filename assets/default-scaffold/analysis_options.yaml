@@ -1,0 +1,19 @@
+include: package:very_good_analysis/analysis_options.yaml
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "lib/flavors.dart"
+
+linter:
+  rules:
+    # Application, not a published package — dartdoc on every public member
+    # is noise.
+    public_member_api_docs: false
+    # Dependencies are grouped by concern, not alphabetized.
+    sort_pub_dependencies: false
+    # Clean Architecture repository/datasource contracts are intentional
+    # boundaries that often start with a single method and grow — they are
+    # not a stand-in for a function typedef.
+    one_member_abstracts: false

@@ -1,0 +1,33 @@
+{
+  "app": {
+    "name": "التطبيق"
+  },
+  "common": {
+    "ok": "موافق",
+    "cancel": "إلغاء",
+    "retry": "إعادة المحاولة",
+    "loading": "جاري التحميل...",
+    "network_error": "يرجى التحقق من اتصال الإنترنت.",
+    "server_error": "حدث خطأ في الخادم.",
+    "unknown_error": "حدث خطأ ما."
+  },
+  "products": {
+    "title": "المنتجات",
+    "empty": "لا توجد منتجات بعد.",
+    "price": "السعر"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "language": "اللغة",
+    "theme": "المظهر"
+  },
+  "language": {
+    "en": "English",
+    "ar": "العربية"
+  },
+  "theme_mode": {
+    "system": "النظام",
+    "light": "فاتح",
+    "dark": "داكن"
+  }
+}

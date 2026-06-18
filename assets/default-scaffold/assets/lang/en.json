@@ -1,0 +1,33 @@
+{
+  "app": {
+    "name": "App"
+  },
+  "common": {
+    "ok": "OK",
+    "cancel": "Cancel",
+    "retry": "Retry",
+    "loading": "Loading...",
+    "network_error": "Please check your internet connection.",
+    "server_error": "Something went wrong on the server.",
+    "unknown_error": "Something went wrong."
+  },
+  "products": {
+    "title": "Products",
+    "empty": "No products yet.",
+    "price": "Price"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme"
+  },
+  "language": {
+    "en": "English",
+    "ar": "العربية"
+  },
+  "theme_mode": {
+    "system": "System",
+    "light": "Light",
+    "dark": "Dark"
+  }
+}
