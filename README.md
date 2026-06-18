@@ -14,9 +14,8 @@ What this skill is, everything it does, and how to use it.
 An opinionated **architecture-and-codegen skill** that makes the agent build
 Flutter apps like a careful senior engineer: every feature comes out layered,
 type-safe, lint-clean, and tested instead of ad-hoc. It enforces **feature-first
-Clean Architecture**, generates real Dart from API contracts, guards the layer
-boundaries with executable gates, and proves its own output with a 23-scenario
-evaluation harness.
+Clean Architecture**, generates real Dart from API contracts, and guards the
+layer boundaries with executable gates.
 
 ```
 lib/
@@ -99,8 +98,7 @@ does **not** write the Retrofit client (a sample can't give the verb/path).
 
 ### `--openapi <spec> --path <endpoint> [--method <verb>]` — generate from a contract (preferred)
 The spec is a contract, so the generator emits **exact** types **and** the
-Retrofit client + Dio-backed datasource. Full type coverage, all proven by the
-eval:
+Retrofit client + Dio-backed datasource. Full type coverage:
 
 - scalars (`int`/`double`/`bool`/`String`), `format: date-time` → `DateTime`
 - nested `$ref` objects, arrays, enums → `String`, real `nullable`
@@ -205,20 +203,7 @@ Dart 3.0 floor — so a scaffold never silently lands code your SDK can't compil
 
 ---
 
-## 6. Proven by an eval harness
-
-The skill ships `eval/run.sh` — **23 generation scenarios** (5 stacks ×
-GET/by-id/POST/PUT/DELETE + special cases) built in throwaway projects, each
-checked for: **compiles** (`flutter analyze`) · **both layer gates** · **values
-map correctly** (`fromJson→toEntity` asserted) · **runs end-to-end**
-(datasource→repo→usecase→cubit) · **renders** (the real page pumps through DI +
-widgets + localization) — plus a **negative-input block** (5 bad-input paths must
-be rejected). All green on Flutter 3.41 and 3.44. This is why the generators can
-be trusted, not just hoped at.
-
----
-
-## 7. Token tips
+## 6. Token tips
 - `new_feature.sh` (esp. `--openapi`) shaves the biggest chunk — it writes the
   boilerplate + exact types on disk instead of as model output, and prints the
   **FINAL list so generated files are never re-opened** (`grep -rln 'TODO(you)'
@@ -229,7 +214,7 @@ be trusted, not just hoped at.
 
 ---
 
-## 8. Versioning & packaging
+## 7. Versioning & packaging
 - Releases are versioned (this is **V12**); `CHANGELOG.md` records the Flutter
   version targeted and what changed.
 - Build a clean, junk-free distributable with `./package.sh V<n>` (scrubs
@@ -240,7 +225,7 @@ be trusted, not just hoped at.
 
 ---
 
-## 9. Example features built with this skill
+## 8. Example features built with this skill
 
 | Feature | Source | Notable |
 |---|---|---|
