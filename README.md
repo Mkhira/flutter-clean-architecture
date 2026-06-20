@@ -10,7 +10,33 @@ A skill that helps you build Flutter apps the right way — every feature comes 
 
 ---
 
+## Lightweight by design — token-efficient
+
+The skill is built around **progressive disclosure**: it loads only what the
+current task needs, so the agent's context stays small and your token spend stays
+low. You're not paying to carry instructions you'll never use.
+
+- **Lean entry point.** The main `SKILL.md` is a compact router (~1.5k words) — it
+  holds the rules and decision logic, not the details. The heavy material lives in
+  **27 focused reference files** that are pulled in only when relevant.
+- **Read only what the task needs.** A styling task loads the theme/responsive
+  references; a networking task loads the Dio/codegen ones. Unrelated references
+  are never loaded — architecture is the only one read every time.
+- **One state-management stack at a time.** Of the five supported stacks, only the
+  **active** one's reference is read — a Riverpod project never loads the Bloc,
+  Provider, GetX, or MobX docs. That alone skips most of the state-management
+  material on any given task.
+- **No duplication.** Package sets and per-area details live in their references,
+  not restated in the entry point — so the same content is never loaded twice.
+
+The result: focused context, fewer tokens per task, and more of your budget spent
+building the feature instead of re-reading boilerplate.
+
+---
+
 ## Installation
+
+Browse the skill on **[skills.sh](https://www.skills.sh/mkhira/flutter-clean-architecture/flutter-clean-architecture)**.
 
 The fastest way — works across agents (Claude Code, Cursor, Windsurf, …):
 
